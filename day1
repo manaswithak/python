@@ -147,9 +147,91 @@ print(type(c))
 print(type(d))
 print(type(e))
 print(e[3])
-e[2]="two"  #modifying the value
+e[2]="two"  #modifying the value is possible as it is mutable
 print(e[2])
 print(e[-1]) #prints the last element
 
 e.append(1000) #append add the value at the end of list
 print(e)
+e=[1,2,3,"abc",True,2.1456]
+e.append(1000)
+print(e)
+print(e.index("abc"))
+# print(e.index("abcd")) #it shows that abcd is not in the list
+print(e.index(True))
+f=[6,7,8,9]
+e.extend(f)  #here e will add elemets from f also and gets extended
+# extend -> the argument should be list -> f is a list
+print(e)
+e.remove(8)  #it removes the element from that particular list
+print(e)
+e.pop()  #removes last element from list
+print(e)
+e.pop(2)  #removes element of the mentioned index from the list pop(argument)
+print(e)
+e.clear() #clear all the elements from the list
+print(e)
+e=[5,6,7,True,"abc",2.335]
+# print(e[2:5]) #here this is used for slicing : and 5 is not sliced so end one not considered [start:end]
+# print(e[1:])  #here only start mentioned so till end it slice as end is not there so to slice till end this can be used
+e.reverse()
+print(e)
+
+# def add(a,b):
+#     print(a+b)
+#  here in output it shows 7 and none coz the function add has print in function and no return value in function so the outer print will have 
+# nothing so it shows none means no value
+# now same thing is happening in print(e.reverse()) coz here it has no value so none 
+# print(add(3,4))    
+
+# def add(a,b):
+#     print(a+b)
+#     return "now it has a value"
+# here now since return is there so now value stored in function is printed using print of function call so it has value now and not none
+# print(add(3,4))    
+
+# e.sort() #orders the elements in ascending order but here in this case it shows type error as it cant arrange in ascending order
+#  between the boolean sting
+# print(e)
+
+f=[1,43,685,9,6,3,7,0,5]
+f.sort()
+print(f)  #here sort is used to arrange in asc order
+
+'''multiline comment'''
+# single line comment
+
+# shallow copy
+e=[1,2,3,True,"abc",2.435]
+f=e #here since f is e so this is shallow copy that is changes made in f will automatically change e also and viceversa
+f.pop()
+print(f)
+print(e)
+
+# copy method for dupication
+e=[1,2,3,True,"abc",2.435]
+f=e.copy() #here since copy is used a duplicate one is done for f as list of e so changes made in f doesnt affect e and viceversa
+f.pop()
+print(f)
+print(e)
+e.insert(4,6) #insert(index,value) inserting element at a particular index and that index previous element will shift to next w/o being removed
+print(e)
+
+# Tuple in python
+
+a=(1,2,3,4,5,6)
+b=(6,7,8,9,10,11)
+'''print(a)
+print(type(a))
+print(a[1])
+a[1]= "two" #tuples are immutable they cant be changed once created
+print(a)'''
+
+print(len(a))
+print(a+b) #here b is getting merged with a even the same value present in both will agin repeat
+print(b*2) #here b will be in the list twice if 3 thrice like repeatation so multiply means another tuple is created and merged
+print(b.count(6)) #here number of 6 present in b it shows b*2 doesnt affect it
+d=b*2
+print(d.count(6)) #here is shows 2 as b*2 so 2 6
+
+print(d.index(6)) #here in d since it has 2 6 but the first index is only shown
