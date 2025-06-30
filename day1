@@ -1,0 +1,155 @@
+print("Hello world")
+a=5
+print(a)
+a="hi"
+print(a)
+print(True)
+print(15)
+  
+'''fuction in python: here def is used for function definition and : is used same as {} in c
+ and for function definiton u need to give space that is indentation but for calling the function
+ it should not have any space. if spca given it considers it as part of the function definition.'''
+
+def greet():
+    print("hello world")  # function definition
+
+greet()  # function calling
+
+def greet(a):
+    print("hello "+a)  # function definition
+
+greet("world")  # function calling
+
+def add(a,b):
+    print(a+b)
+
+add(5,6) 
+
+def sub(a,b):
+    print(a-b)
+
+sub(5,6)    
+
+def mul(a,b):
+    print(a*b)
+
+mul(5,6)    
+
+def div(a,b):
+    print(a/b)
+
+div(5,6)   
+
+def exp(a,b):
+    print(a**b)
+
+exp(2,2)    
+
+def mod(a,b):
+    print(a% b)
+
+mod(5,6)    
+
+''' using return means the value is again being in the function only so for that again print should be used
+so that the value bring arount the function is printed using print of the function calling'''
+
+def add(a,b):
+    return(a+b)
+
+add(5,6)   #11
+print(add(5,6))
+
+def sub(a,b):
+    return(a-b)
+
+sub(5,6)
+print(sub(5,6))
+
+def mul(a,b):
+    return(a*b)
+
+mul(5,6)
+print(mul(5,6))
+
+def div(a,b):
+    return(a/b)
+
+div(5,6)
+print(div(5,6))
+
+def mod(a,b):
+    return(a%b)
+
+mod(5,6)
+print(mod(5,6))
+
+def exp(a,b):
+    return(a**b)
+
+exp(5,6)
+print(exp(5,6))
+
+def add(a,b):
+    return(a+b)
+
+add(5,6)
+print(add(5,6)+add(1,3)) 
+
+name="hello"
+def add(a,b):
+    print(name)
+    return a+b
+
+print(add(4,5))
+
+
+# def add(c,d):
+#     print(c+d)
+#     student=100  HERE student is being defined in function but print is out so not possible
+    #    student is local variable
+   
+# print(student)
+# add(3,4)
+
+student=100 
+ #this is global variable so print can be done through function also but not
+# vice versa coz that will be local variable and also print has to done in function only 
+# out of function it cant be considered
+def add(c,d):
+    print(c+d)    
+    print(student)
+add(3,4)   
+
+# def add(c,d):
+#     print(c+d)    
+#     print(student)
+# add(3,4)    
+# student=100 here it throws error coz line by line it goes so after student no print
+# but in function it cant be considered as that line is already done 
+
+# def add(c,d):
+#     print(c+d)    
+#     print(student)
+# student=100 
+# add(3,4) here printed coz first student is considered then add so in function both are considered
+#  as student is before so print possible in previous since add is first so function will be over
+#  then later student is done and no print.
+
+a=10
+b="string"
+c=True
+d=2.1230
+e= [1,2,3,"abc",True,2.4455]
+
+print(type(a)) 
+print(type(b))
+print(type(c))
+print(type(d))
+print(type(e))
+print(e[3])
+e[2]="two"  #modifying the value
+print(e[2])
+print(e[-1]) #prints the last element
+
+e.append(1000) #append add the value at the end of list
+print(e)
