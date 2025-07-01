@@ -64,3 +64,149 @@ print(x)
 a={'name':"manaswitha","age":"25","subject":"python","istrainer":True}
 print(a)
 print(type(a))
+print(a['name']) #give the value of the key typed
+print(a['subject'])
+a['name']='alias' #it changes the value of the key typed
+print(a)
+a['subject']='java'
+a['istrainer']=False
+print(a)
+#in a dictionary you can have list tuple set or another dictionary also
+a={'name':"manaswitha","age":25,"subject":"python","istrainer":True,'other':['joshwa','sujoi','sanyukta']} #list in dictionary
+print(a)
+print(a['other'])
+a={'name':"manaswitha","age":25,"subject":"python","istrainer":True,'other':{'name':'joshwa','age':26}} #dictionary in dictionary
+print(a)
+print(a['other']['name'])
+c={'name':"devipriya","age":"30","subject":"java"}
+a.update(c) #to add the values of c to a if keys are same
+print(a)
+print(a.get('name')) #to get the value
+print(a)
+
+for i in c.keys():  #to get the key only name from dictionary
+    print(i) 
+
+for i in c.values():  #to get values only
+    print(i)
+
+for v,k in c.items():  #to get both key and value present in dictionary
+    print("key = "+v)
+    print("value = "+k)
+
+a={'name':"manaswitha","age":"25","subject":"python","istrainer":True}
+for v,k in a.items():  #to get both key and value present in dictionary
+    print("key = "+v)
+    # print("value = "+k)   #here you would get typeerror as in istrainer boolean is there and not string so we can only do str to str(two same operands)
+    # so to change that we use +str(v) now it will be changed to string
+    print("value = "+str(k))
+
+# a.clear() #clears all the key value pairs on dictionaries
+# print(a)
+
+a.pop("age")  #this removes the entered key and its value from the dictionary
+print(a)
+
+#strings in python
+b="good"  
+"morning"
+print(b)  #this doesnt print both the line of string
+a='''GOOD MORNING   
+GOOD AFTERNOON
+GOOD EVENING'''
+print(a)  #for printing multiline string u use '''typed in this will print'''
+B="abcdefghijklmnopqrstuvwxyz"
+print(B[5]) #accessing string via character
+print(B[-1]) #-ve values print it in reverse
+print(B[3:6])  #slicing
+print(B[9:])
+print(B[-6:])
+
+#string methods
+a="  abcdefghijklmnopqrstuvwxyz  "
+b="123"
+print(a.upper())   # changes lowercase to upper case
+print(a.strip()+b)  #here strip is used to remove the space present in a an then adding b at end of a
+print(a.replace("a","A"))  #it replaces your string with the given value
+print(a.replace("abcd","1234"))
+
+d="a,b,c,d,e,f,g,h,i,j,k"
+c=d.split(",")  #converts the string to list. since in string each letter has, so in "," we use , as seperator
+print(c)
+
+e="a b c d e f g h"
+x=e.split(" ")   #here since space is in string between elements we use space as seperator so in list elements can be identified
+print(x)
+
+print(" ".join(e))  #converts the list into string space is give to join the elemnts using space
+
+e="a b c d e f g h"
+d="a d g y j c d"
+c=e+d
+print(c.count("a"))  #count -> number of times the given string repeated in the original string
+print(c.startswith("a b"))  #it gives in boolean form like True or False of the condition is there
+print(c.endswith("j c d"))
+print(c*3) #print c 3 times
+print("a" in e) #gives output in True or False
+
+ for input from user do in terminal dont run directly
+# a=input() #input from user default input takes as string
+#print("hello "+a)
+# print("sum of a with 10 is",(a+10)) #this shows error as input only string not number
+a=int(input("enter a"))  #input will be int
+print("sum of a with 10 is",(a+10))
+
+
+print("sum of a with 10 is",(a-10))
+
+
+print(f"sum of a with 10 is{a*10}")  #another method for it
+
+
+print("sum of a with 10 is",(a%10))
+
+
+print("sum of a with 10 is",(a/10))
+
+
+print("sum of a with 10 is",(a**10))  
+
+#email validator
+email = input("enter your email: ")
+if "@" in email and email.endswith(".com"):
+    print("valid email")
+else:
+    print("invalid email")
+
+#arithmetic operator
+a=10
+b=3
+print(a/b)
+print(a//b) #this is floor division it give whole number
+
+# if statement
+age=18
+if age >= 18:
+    print("you are eligible to vote.")
+
+#if else statement
+age=18
+if age >= 18:
+    print("you are eligible to vote.")
+
+else:
+    print("not eligible to vote")
+
+marks = 40
+if marks >= 35:
+    print("you passed")
+else:
+    print("you failed")
+
+#input method
+age=int(input("enter your age: "))
+if age >= 18:
+    print("you are eligible to vote.")
+
+else:
+    print("not eligible to vote")
