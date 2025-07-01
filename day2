@@ -1,0 +1,66 @@
+# sets in python
+# not ordered (no index value),partially mutable(modified by methods)
+# unique elements they dont allow duplicates
+
+# b={1,2,3,4,5,6}
+c={1,1,2,3,3,4,45,567,98,667,56677}
+''' {1, 2, 3, 4, 98, 56677, 45, 567, 667} this will be the output for c as it doesnt allow duplicate value it doesnt print it 
+ instead print only once'''
+# print(b)
+# print(type(b))
+# print(c)
+# print(b[1]) #you can't access it through index
+# b[2]=25 
+# print(b)
+c.add("add")#add element in the set
+print(c)
+c.remove(667) #removes the element from the list 
+c.remove("add")
+print(c)
+# c.remove("add") #this throws an error as add is already removed previously
+c.discard("add") #this will not show any error it will just leave and proceed to nect line
+print(c)
+emset=set() #creating empty set -> set() this is printed
+print(emset)
+print(c)
+print(10 in c) #this throws false as in is used to comapare the number in set if not there is shows false
+print(45 in c) #this shows true as the element is present in the set
+# c.clear()  #clears the set and shows set()
+# print(c)
+a={2,4,6,8,8,4,3,2,6}  
+c.update(a)   #add the elemets of a to c which are unique
+print(c)
+c.pop()  #since no index and set are unordered so it wont remove last element but it removes any element
+print(c)
+# c.pop(2)  #this is not possible as set doesnt have index
+# print(c)
+e=c.copy()  #creates a duplicate copy of the elements present in the set
+print(e)
+
+#set operations
+A={1,2,3,4,5,6}
+B={7,8,9,5,6}
+print(A.union(B)) # union(|) rints elments by combining both set and duplicates values will only be shown once
+print(A|B)
+print(A.intersection(B)) #intersection(&) elements which are present in both A and B
+print(A&B)
+print(A.difference(B)) #difference(-) elements which are in A but not in B
+print(A-B)
+print(B.difference(A)) #elements which are in B not in A 
+print(B-A)
+print(A.symmetric_difference(B)) #symmetric_difference(^) elemets which are not in both A and B
+print(A^B)
+
+x=frozenset([1,2,3,4,5]) #since set is partially mutable but using frozen set it becomes completely immutable means can't be changed it will be fixed
+print(x)
+x.add(8)  #it shows error as it is frozenset cant be modified
+print(x)
+
+#dictionary -> {key : value, key : value, key : value, key : value} dictionary has key and value through this can identify between set and dictionary
+#unordered,mutable,key must be unique,cant have duplicates in key
+#fast lookups using keys
+# python dictionary can have "" or ''
+#json ""
+a={'name':"manaswitha","age":"25","subject":"python","istrainer":True}
+print(a)
+print(type(a))
