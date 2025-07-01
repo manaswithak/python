@@ -8,7 +8,8 @@ print(15)
   
 '''fuction in python: here def is used for function definition and : is used same as {} in c
  and for function definiton u need to give space that is indentation but for calling the function
- it should not have any space. if spca given it considers it as part of the function definition.'''
+ it should not have any space. if spaca given it considers it as part of the function definition.
+ here greet is the name of your choice to give'''
 
 def greet():
     print("hello world")  # function definition
@@ -190,7 +191,7 @@ print(e)
 # here now since return is there so now value stored in function is printed using print of function call so it has value now and not none
 # print(add(3,4))    
 
-# e.sort() #orders the elements in ascending order but here in this case it shows type error as it cant arrange in ascending order
+# e.sort() #orders the elements in ascending order but here in this case it shows type error as it cant arrange in ascending order and it shows only if it is numbers
 #  between the boolean sting
 # print(e)
 
