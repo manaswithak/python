@@ -180,4 +180,91 @@ yash.print_details()
 deekshitha.print_details()
 
 
-             
+class A:
+    def speak(self):
+        print("A speaks")
+
+class B(A):
+    def speak(self):
+        print("B speaks")
+
+obj = B()
+obj.speak()
+
+class Demo:
+    def __init__(self, x):
+        self.__x = x
+
+    def show(self):
+        print(self.__x)
+
+d = Demo(10)
+d.show()
+print(d._Demo__x)
+
+i = 0
+while i < 3:
+    i += 1
+    if i == 2:
+        continue
+    print(i)
+
+    s = {1, 2, 2, 3}
+print(len(s))
+
+class Demo:
+    def __init__(self, val):
+        self.value = val
+
+    def show(self):
+        print(self.value * 2)
+
+obj = Demo(5)
+obj.show()
+
+class Test:
+    count = 0
+
+    def __init__(self):
+        Test.count += 1
+
+a = Test()
+b = Test()
+c = Test()
+print(Test.count)
+
+class A:
+    def greet(self):
+        print("Hello from A")
+
+class B(A):
+    def greet(self):
+        print("Hello from B")
+
+class C(A):
+    def greet(self):
+        print("Hello from C")
+
+class D(B, C):
+    pass
+
+d = D()
+d.greet()
+
+class Counter:
+    def __init__(self, limit):
+        self.limit = limit
+
+    def count_up(self):
+        for i in range(1, self.limit + 1):
+            print(i, end=' ')
+
+c = Counter(3)
+c.count_up()
+
+class Multiply:
+    def table(self, num):
+        for i in range(1, 4):
+            print(num * i, end=' ')
+
+Multiply().table(2)    
