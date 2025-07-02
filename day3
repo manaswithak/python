@@ -1,0 +1,103 @@
+#match statement which is same as switch case statement
+day = 7
+match day:
+    case 1:
+        print("monday")
+
+    case 2:
+        print("tuesday")
+
+    case 3:
+        print("wednesday")
+
+    case 4:
+        print("thursday")
+
+    case 5:
+        print("friday")
+
+    case 6:
+        print("saturday")
+
+    case 7:
+        print("sunday")
+
+    case _:   #works same as the default one in c
+        print("looking forward for the weekend")
+
+#elif statement
+marks=int(input("enter the marks= "))
+if marks>=95 and marks<=100:
+    print("S grade")
+
+elif marks>=85 and marks<=94:
+    print("A grade")
+
+elif marks>=75 and marks<=84:
+    print("B grade")
+
+elif marks>=65 and marks<=74:
+    print("C grade")
+
+elif marks>=40 and marks<=64:
+    print("D grade")
+
+elif marks<40:
+    print("Failed")
+
+else:
+    print("invalid mark")
+
+#for loop
+for i in range(1,101):
+    print(i)
+
+for i in range(7,76):
+    print(i)
+
+for i in range(6,65):
+    print(i)
+
+for i in range(3,150):
+    print(i)
+
+#while loop
+while True:
+    x=int(input("enter the number to print : "))
+    if x==0:
+        break
+    print(x)
+    print("enter 0 to break")
+
+#continue
+for i in range(1,6):
+    if i == 3 :
+        continue
+    print(i)
+
+for i in range(1,100):
+    if i%2==0:
+        continue
+    print(i)
+
+for i in range(1,100):
+    if i%2!=0:
+        continue
+    print(i)
+
+for i in range(1,100):
+    if i%2==0:
+        pass  #does nothing it is just there when u dont know wt to do
+    print(i)
+      
+#import module(which is not core in python but we are importing it and using)
+import math
+import random
+
+print(math.sqrt(144))
+print(math.floor(5.9))
+print(math.ceil(5.1))
+print(random.randint(1,10))
+print(random.randint(5,55))
+print(random.randrange(1,11))  #except for 11 remaining can be printed but not 11 in then range condition
+
