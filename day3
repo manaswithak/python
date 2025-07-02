@@ -101,3 +101,57 @@ print(random.randint(1,10))
 print(random.randint(5,55))
 print(random.randrange(1,11))  #except for 11 remaining can be printed but not 11 in then range condition
 
+#create a file name calculator and do the below which is useful for direct operations
+def add(a,b):
+    print(a+b)
+
+def sub(a,b):
+    print(a-b)
+
+def mul(a,b):
+    print(a*b)
+
+def div(a,b):
+    print(a%b)
+
+#another file with any name so here we can indirectly use the calculator file
+import calculator #importing our own file calculator where all opeartions are included in it
+calculator.add(5,6)
+calculator.sub(5,6)
+calculator.mul(5,6)
+calculator.div(5,6)
+
+#types of arguments
+
+#positional arguments -> which depends on the position of arguments
+def greet(student,trainer):
+    print(f"GOOD AFTERNOON {trainer}")
+    print(f"Welcome {student}")
+
+greet("subha","manusri")  #this is positional argument because it depends on its position subha argument has student parameter and manusri has trainer
+#it completely depends on postion of arguments and matching paramter position 
+
+#keyword arguments
+def greet(student,trainer):
+    print(f"GOOD AFTERNOON {trainer}")
+    print(f"Welcome {student}")
+
+greet(trainer="subha",student="manusri")  #giving keyword to the argument and using that keyword as parameters so even if postion is different it
+#considers the keyword and proceed
+
+#variable length arguments  ->not sure when how many arguments you are passing so automatically the parameters are  set according to arguments passed
+def print_numbers(*args):  #args are stored in for loop as it is list
+    for i in args:
+        print(i)
+
+print_numbers(5,6,7,8,9,24,2,42,354,645)
+
+def print_numbers(**kwargs):  #kwargs use dictionary to store key and value
+    for i in kwargs.keys():
+        print(i)
+    for i in kwargs.values():
+        print(i)
+    for k,v in kwargs.items():
+        print(f"key {k} : value {v}")
+
+print_numbers(trainer="govinthan",student1="manusri",student2="yash",student3="likitha",grade=True,marks=9.5)
