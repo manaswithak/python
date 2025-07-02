@@ -156,3 +156,28 @@ def print_numbers(**kwargs):  #kwargs use dictionary to store key and value
 
 print_numbers(trainer="govinthan",student1="manusri",student2="yash",student3="likitha",grade=True,marks=9.5)
 
+#class in python
+
+class student:
+    #constructor is a function of class which is called immediately after creating object(automatically)
+    #to initialize variable we have to create constructor. variable is created after class
+    def __init__(self,student_name,usn_no,course):
+            self.student_name=student_name
+            self.usn_no=usn_no
+            self.course=course
+    def print_details(self,current_course="python"):
+          print(f'''name={self.student_name} usn_no={self.usn_no} course={self.course}''')  #self is used to store that self itself like yash details yash self.
+          print(current_course)   #this will be common to everyone as no self is mentioned
+
+
+yash=student("yash",12345,"python")
+tvisha =student("tvisha",1234,"javascript")
+deekshitha=student("deekshitha",24236,"c")
+devipriya=student("devipriya",43676,"java")
+anjali=student("anjali",1325767,"css")
+
+yash.print_details()
+deekshitha.print_details()
+
+
+             
