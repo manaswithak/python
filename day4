@@ -1,0 +1,26 @@
+#inheritance method
+class student:
+    def __init__(self,student_name,usn_no,course):
+            self.student_name=student_name  #self initialising is important here
+            self.usn_no=usn_no
+            self.course=course
+    def print_details(self):
+          print(f'''name={self.student_name} usn_no={self.usn_no} course={self.course}''')
+          
+class laptop(student): #the features of student 9class has been passed dowm to laptop class
+      def __init__(self,student_name,usn_no,course,cpu,gpu,ram):
+            super().__init__(student_name,usn_no,course)  #for this reinitialize is not necessary here as in parent class it is already done
+            self.cpu=cpu
+            self.gpu=gpu
+            self.ram=ram
+# even if the next three lines are not typed still in output you will get parents details only as they are linked      
+      def print_details(self):
+            print(f"cpu={self.cpu} gpu={self.gpu} ram={self.ram}")  
+            return super().print_details()
+      
+acer=laptop("raj",1234,"python","i5",12,"RTX 4060")
+acer.print_details()
+
+#so here first in acer=laptop it goes to laptop class and process the information in constructor then next line is super constructor so it goes to parent class 
+#and store the necessary details like reinstialising and then return to laptop class and reintialize the one there then goes to print_details here first
+#laptop one is printed then the print_details of super class is returned and printed.
