@@ -87,3 +87,97 @@ class child(parent):
 
 obj=child()
 obj.show()
+
+#operator overloading
+# method overriding(compile-time polymorphism)
+
+class Point:
+    def __init__(self,x,y):
+        self.x=x
+        self.y=y
+
+    def __add__(self,other):
+        return Point(self.x + other.x, self.y + other.y)  
+    
+p1= Point(1,2)
+p2= Point(3,4)
+p3= p1 + p2
+print(p3.x,p3.y)
+
+#here first p1 will have the self x and y but now to store p2 values we use other x and y (other -> it can another name also) then 
+#  return Point(self.x + other.x, self.y + other.y)  this will have addition values of x and y but since point class is mentioned they go to constructor
+# again and then return to p3 so last line will print p3.x and p3.y
+
+#create an example showing encapsulation using private  variables
+# show method overriding with base and derived class
+
+#error(exception) handling -> to prevent program crashes, handle error gracefully 
+#types of error
+# 1.TypeError
+a=10
+b="hello"
+print(a+b)  #here u get typeerror as int+string is not possible so operation on two different datatype is not possible
+
+# 2.ValueError
+a="ten"
+print(int(a)) #valueerror coz int has to have numebr but ten is not so even after converting it cant change
+
+# 3.ZeroDivisionError
+a=10
+print(a/0)  #here dividing by zero you will get infinity but in python we call that as zerodivision error
+
+# 4.NameError
+a=10
+print(a)
+print(b)  #here you will get nameerror as b is not declared with any number so you cant print
+
+# 5.IndexError
+a=[1,2,3]
+print(a[4]) #trying to access index that is not in list is indexerror
+
+# 6.SyntaxError
+a=[1,2,3]
+print(a[4]  #this has syntax error has ) is not there so not mention of some syntax will show syntaxerror
+      
+# 7.LogicalError->this will not be shown as error coz output will be printed but logic is wrong
+def add(a,b):
+    print(a-b)  #here we mentioned add but doing subtraction so logically wrong but you will get output
+add(5,6)
+
+
+try:
+    print(1/0)
+    print(int("hello"))
+except:#here using this the line will be print and go to next line without causing problem coz dirctly doing will show error and next line will not be printed
+    print("there is an error")
+print("rest of the program")
+
+try:
+    print(1/0)
+    print(int("hello"))
+except ZeroDivisionError:
+    print("we cannot divide by zero , try another number")    #another method if u know the error name but both error cant be printed once only 1st one
+except ValueError:
+    print("cannot convert this string to number")
+print("rest of the program")
+
+try:
+    result=10/2
+except ZeroDivisionError:
+    print("error")           #to print if error and if no error then else option will be printed
+else:
+    print("success:",result)
+
+# raising exceptions manually -> naming your own error
+age=int(input("enter your age: "))
+if age<18:
+    raise ValueError("age must be 18 or older")
+else:
+    print("access granted")
+
+#file handling
+#f=open("firstfile.txt","x")   #x->create
+r=open("firstfile.txt","r")   #r->read
+content=r.read()
+r.close()  #if not close so no security and data can be corrupted and increase file vulnerability
+print(content)
