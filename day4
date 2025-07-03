@@ -181,3 +181,95 @@ r=open("firstfile.txt","r")   #r->read
 content=r.read()
 r.close()  #if not close so no security and data can be corrupted and increase file vulnerability
 print(content)
+
+#file handling
+#f=open("firstfile.txt","x")   #x->create
+r=open("firstfile.txt","r")   #r->read
+content=r.read()
+r.close()  #if not close so no security and data can be corrupted and increase file vulnerability
+print(content)
+
+#reading from a file
+#read() reads entire file as a string
+f= open("firstfile.txt","r")
+content=f.read()
+print(content)
+f.close()
+
+#readline() reads one line at a time
+f=open("firstfile.txt","r")
+line1=f.readline()
+line2=f.readline()
+print(line1,line2)
+f.close()
+
+f=open("file2.txt","w")  #creates a file if doesnt exist and in write mode the data will be overwritten i.e,previous data is removed and the one in this is written in it
+f.write("THIS IS NEW CONTENT")
+f.close()
+
+f=open("file2.txt","a")  #in this the data is written after the data present in file means it doesnt erase data present in file
+f.write("THIS IS NEW CONTENT")
+f.close()
+
+r=open("file3.txt","r")  #here file is not created so you get error as no file was found
+content=r.read()
+r.close()
+print(content)
+
+try:  #we can deal with the files not created without showing error in this way
+    r=open("file3.txt","r")
+    content=r.read()
+    r.close()
+    print(content)
+except FileNotFoundError:
+    print("The file is not there!!!")
+
+try: 
+    r=open("file2.txt","r")
+    content=r.read()
+    r.close()
+    print(content)
+except FileNotFoundError:
+    print("The file is not there!!!")
+
+#file check and management
+import os
+#check if file exists
+print(os.path.exists("file2.txt")) #if file is there it gives True orelse False(boolean response)
+
+os.remove("firstfile.txt")  #deletes the file present
+
+os.rename("file1.txt","file2.txt")   #here if above line is not removed then we will get error as again running time it again checks for firstfile.txt 
+# to remove but since that file was removed so we will get error and this line will not be printed or considered.
+
+with open("download.jpg","rb") as f: #here with automatically close the file
+    content=f.read()
+
+print(content)
+
+with open("copy_image.jpg","wb") as f:
+    f.write(content)  #here the binary of the image that was saved in content though previous code is written and created again 
+
+with open("file1.txt","r+") as f:  #read and write
+    f.write("Hello")
+    content=f.read()
+print(content)
+
+with open("file1.txt","a+") as f:   #append and read
+    f.write("hello w")
+#here after printing the content in file1.txt the cursor in that file will again start from 1st place
+
+#common file I/O errors 
+# what comes under I/O error
+# -> Disk full
+# -> File not found
+# -> File still in use(file not closed)
+# -> Invalid directory
+# -> Hardware failure
+try:
+    with open("missing.txt","r") as f:
+        data = f.read()
+except FileExistsError:
+    print("the file doesnt exist")
+except IOError:
+    print("an I/O error occured")
