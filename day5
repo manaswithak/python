@@ -1,0 +1,156 @@
+# numpy is not working in vs studio do in google collab
+# Numpy is numerical python and it is a library/module
+# Numpy can handle large data
+# it is highly used because it is fast
+import numpy as np  #creating alias for numpy as np for easy use
+
+a=np.array([1,2,3,4])  #creating numpy array
+b=np.array([[1,2,3,4],["abc",True,5.3,3]])  #this is format for 2d array(two arrays in list) ->one matrix
+print(b)
+print(b.shape)
+print(b.ndim)
+print(a)
+print(a.ndim) #ndim->number of dimension
+print(a.shape) #shape=rows*columns
+print(a.dtype)  #U23 if string and mixed datatype then U32, int 64 is if only int
+c=np.array([[[1,2],[2,4]],[[1,2],[3,4]]]) #two matrix -> three dimensional matrix
+print(c)
+print(c.ndim)
+print(c.shape)
+
+d=np.zeros([1,3])  #it creates 1 row 3 columns with 0 as values in it
+print(d)
+e=np.zeros([3,5])
+print(e)
+
+f=np.ones([3,5])  #creates array of ones with 3 rows and 5 columns
+print(f)
+
+g=np.eye(5)  #creates diagonal of 1 and remaining 0 with 5 row 5 column
+print(g)
+g=np.eye(3)
+print(g)
+
+h=np.arange(1,10,1) #arange->(start,stop,step) print elements from 1 to 9 linearly here 10 will not be there as it is stop
+print(h)
+h=np.arange(1,10,2)  #this will print 1 then go to 3 as step is 2 which is jump
+print(h)
+h=np.arange(3,50,3)
+print(h)
+
+i=np.linspace(0,1,5) #linspace->(start,stop,countofsplit) #between 0 and 1 it will split to 5 that is countofsplit
+print(i)
+i=np.linspace(0,10,5)  #it will include stop value also in this
+print(i)
+i=np.linspace(0,100,5)
+print(i)
+
+#indexing and slicing
+#                0       1
+arr=np.array([[1,2,3],[4,5,6]])  #for indexing it starts from 0 row 1 row and inside elements 0,1,2....
+#              0 1 2   0 1 2
+print(arr)
+print(arr.shape)
+print(arr[1,1])
+print(arr[0,2])
+print(arr[:,2])  #slicing : here all rows are comsidered at start and 3rd column of each row so from all rows 3rd column element is printed
+print(arr[:,0])
+print(arr[1,:])  #1st row with all columns
+print(arr.shape)
+print(arr.reshape(3,2))  #changing to 3 rows and 2 columns
+print(arr.flatten()) #converts it is 1 dimension
+
+#arithmetic and broadcasting
+a=np.array([1,2,3])  #same dimension direct operation but if different dimension then we do broadcasting
+b=np.array([10,20,30])
+print(a+b)
+print(a*3)
+print(a-b)
+c=np.array([[1],[2],[3]]) #3*1
+d=np.array([10,20,30])  #1*3
+print(c+d) #since c and d has different dimension so broadcasting is done
+''' [1] + [10,20,30] =>(BROADCASTING)=> [10+1 20+1 30+1]
+    [2] + [10,20,30]                    [10+2 20+2 30+2]
+    [3] + [10,20,30]                    [10+3 20+3 30+3] '''
+
+#aggregate functions 
+arr=np.array([[1,2],[3,4]])
+print(arr.sum())   #adding of all elements in matrix
+print(arr.mean())  #avg of all elements 
+print(arr.max(axis=0))  #here if 0 means row and 1 is column
+print(np.median(arr))
+
+#boolean indexing and filtering
+a=np.array([1,2,3,4,5])
+mask=a>3
+print(a[mask])
+
+#Panda ->generally called as python data analysis or panel data analysis
+#for data analysis we mostly use pandas
+# to make the data ready
+# panda used for data manipulation and analysis
+# panda is not a database but it can work with data from various sources such as csv files, excel spreadsheet and sql database
+# install pandas in vs studio pip install pandas and numpy is not in vs studio
+
+dict={"name":["yash","manusri","likitha"],"marks":["0","80","70"],"grade":["A+","A","B"],"Age":["14","15","16"]}
+
+#Dataframe -> Tabular form of data
+#autoindexed, way to frame the data
+
+df=pd.DataFrame(dict)
+print(df)
+
+dict = {
+    "name": ["yash", "manusri", "likhitha", "arjun", "neha", "raj", "simran", "vikram"],
+    "marks": ["0", "80", "70", "85", "90", "75", "60", "95"],
+    "grade": ["b", "a", "c", "a", "a", "b", "c", "a"],
+    "age": [14, 18, 20, 16, 19, 17, 15, 21]
+}
+df=pd.DataFrame(dict)
+print(df)
+print(df.head())  #head method will retrieve first 5 entries by default or you can choose by (no.)
+
+import pandas as pd
+dict = {
+    "name": ["yash", "manusri", "likhitha", "arjun", "neha", "raj", "simran", "vikram"],
+    "marks": ["0", "80", "70", "85", "90", "75", "60", "95"],
+    "grade": ["b", "a", "c", "a", "a", "b", "c", "a"],
+    "age": [14, 18, 20, 16, 19, 17, 15, 21]
+}
+#column access
+df=pd.DataFrame(dict)
+print(df["name"])
+print(df["age"])
+print(df["age"]>15)  #gives in boolean form
+print(df["marks"])
+
+dict = {
+    "name": ["yash", "manusri", "likhitha", "arjun", "neha", "raj", "simran", "vikram"],
+    "marks": ["0", "80", "70", "85", "90", "75", "60", "95"],
+    "grade": ["b", "a", "c", "a", "a", "b", "c", "a"],
+    "age": [14, 18, 20, 16, 19, 17, 15, 21]
+}
+df=pd.DataFrame(dict)
+print(df.iloc[1])  #gives the details of the persons of typed index
+
+df.drop("age",axis=1,inplace=True)  #alter original data(inplace=True), returns new duplicate data frame(inplace=False) also age is deleted
+duplicatelist=df.drop("grade",axis=1,inplace=False)  
+print(df)
+print(duplicatelist)
+df.rename(columns={"marks":"pecentage"},inplace=True)
+print(df)
+
+import pandas as pd
+import numpy as np
+
+df=pd.DataFrame({
+    "name":["alice",None,"charlie"],"marks":[85,np.nan,95]
+})
+print(df)
+#to identify nan in large datas or anything
+print(df.isnull())  #give in boolean True means it has null value
+print(df.fillna(0)) #fill the null values with zero
+# print(df.dropna())  #delete the row of nan values one
+print(df.dropna(inplace=True)) #alter the original dataframe if True deletes the one with values if False deletes nan value one
+print(df.describe())
+
