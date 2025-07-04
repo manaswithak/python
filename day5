@@ -154,3 +154,133 @@ print(df.fillna(0)) #fill the null values with zero
 print(df.dropna(inplace=True)) #alter the original dataframe if True deletes the one with values if False deletes nan value one
 print(df.describe())
 
+import pandas as pd
+import numpy as np
+
+df=pd.DataFrame({'category':['A','B','A','C','B','A'],'value':[10,15,12,20,18,14]
+})
+print(df.groupby("category")['value'].mean()) #here it will go to category take common one of values and mean it
+
+create this as a csv in vs code and then the below end command in another py file after installing pandas
+student_id,name,age,grade,email
+1,John Smith,18,A,john.smith@example.com
+2,Emily Johnson,17,B+,emily.johnson@example.com
+3,Michael Brown,19,A-,michael.brown@example.com
+4,Sarah Davis,18,B,sarah.davis@example.com
+5,David Wilson,17,A,david.wilson@example.com
+6,Jennifer Lee,18,B+,jennifer.lee@example.com
+7,Robert Miller,19,C,robert.miller@example.com
+8,Lisa Taylor,17,A-,lisa.taylor@example.com
+9,James Anderson,18,B,james.anderson@example.com
+10,Megan Thomas,19,A,megan.thomas@example.com
+
+Student_Data=pd.read_csv("student.csv")
+print(Student_Data)
+
+import pandas as pd
+import numpy as np
+
+data = { "Student":["amit","sara","neha"], "Math":[80,85,90],"Science":[75,88,92],"English":[78,80,85]}
+df=pd.DataFrame(data)
+df["Average"]=df[["Math","Science","English"]].mean(axis=1)
+print(df.sort_values(by="Average",ascending=False))
+
+import pandas as pd
+import numpy as np
+
+#Series is a one dimensional labeled array in pandas. Creating Series with our own index
+#from list
+s1 = pd.Series([10,20,30,40])
+#from list with custom index
+s2=pd.Series([100,200,300],index=['a','b','c'])
+#from dictionary
+s3=pd.Series({'x':5,'y':10,'z':15})
+print(s1,s2,s3)
+print(s1.index)
+print(s1.values)
+print(s1.size) #gives the number of elements
+print(s1.shape) #no of elements will be given as it is not array
+#slicing and indexing
+print(s2['b'])
+print(s2[1])
+print(s2[['a','c']])
+print(s2[0:2])
+
+#modifying series
+s2['b']=250
+s2['c']=400
+print(s2)
+s2.drop('a',inplace=True) #delete item
+print(s2)
+
+s=pd.Series([1,2,3])
+print(s+2)
+print(s*2)
+print(s**2)
+
+#boolean indexing
+s=pd.Series([5,10,15,20])
+print(s[s>10])  #filters:15,20
+
+import pandas as pd
+import numpy as np
+
+#handling missing values
+s=pd.Series([10,None,30,np.nan])
+print(s.isnull())  #True where NaN
+print(s.notnull())  #inverse
+s.fillna(0)  #replace Nan with o
+s.dropna()  #remove NaN entries
+
+#descriptive statistics
+s=pd.Series([10,20,30,40,50])
+print(s.sum())
+print(s.mean())
+print(s.min(),s.max())
+print(s.std())       #standard deviation
+print(s.describe())  #summary stats
+
+names=pd.Series(["Alice","bob","CHARLIE","dave"])
+print(names.str.upper())
+print(names.str.capitalize())
+print(names.str.contains("a"))
+
+#sorting and ranking
+s=pd.Series([30,10,40,20], index=['d','b','a','c'])
+print(s.sort_values())  #sort by values
+print(s.sort_index())  #sort by index
+print(s.rank())  #rank based on values
+
+s1=pd.Series([10,20,30],index=['a','b','c'])  #here since a index is only in s1 so cant add then nan same 
+s2=pd.Series([5,15,25],index=['b','c','d'])
+print(s1+s2)
+
+#matplotlib used for creating static, animated where in graph data is seen
+import matplotlib.pyplot as plt
+x=[1,2,3,4,5]
+y=[10,15,13,18,16]
+plt.plot(x,y)
+plt.title("Basic Line Plot")
+plt.xlabel("X-axis")
+plt.ylabel;("Y-axis")
+plt.grid(True)
+plt.plot(x,y,color='green')
+plt.show()
+
+x=[1,2,3,4,5]
+y1=[1,4,9,16,25]
+y2=[25,16,9,4,1]
+plt.plot(x,y1,label="Ascending")
+plt.plot(x,y2,label="Descending")
+plt.legend()
+plt.show()
+
+
+#bar charts
+categories=['A','B','C','D']
+values=[10,24,36,18]
+plt.bar(categories,values,color='skyblue')
+plt.title("bar graph")
+plt.show()
+#horizontal bAR CHART
+plt.barh(categories,values,color='orange')
