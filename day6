@@ -1,0 +1,104 @@
+#scatter plot
+import matplotlib.pyplot as plt
+x=[5,7,7,2,17,2,9]
+y=[99,86,87,100,86,103,87]
+plt.scatter(x,y,color='red')
+plt.title("scatter plot example")
+plt.xlabel("X values")
+plt.ylabel("Y values")
+plt.show()
+
+#histogram
+import numpy as np
+data = np.random.randn(1000)
+plt.hist(data,bins=10,color='olive',edgecolor='black')
+plt.title("histogram of random data")
+plt.xlabel("value")
+plt.ylabel("frequency")
+plt.show()
+
+#pie chart
+sizes=[30,40,15,15]
+labels=['python','java','c++','javascript']
+plt.pie(sizes,labels=labels,autopct='%1.1f%%',startangle=90)
+plt.title("programming languages used")
+plt.axis('equal')  #equal aspect ratio to amke it a circle
+plt.show()
+
+#sub plots
+x=[1,2,3,4,5]
+y=[5,7,4,6,8]
+plt.subplot(1,2,1)  #1 row, 2 columns, 1st plot
+plt.plot(x,y)
+plt.subplot(1,2,2)  #1 row, 2 columns, 2nd plot
+plt.bar(x,y)
+plt.tight_layout()
+plt.show()
+
+#saving plots to file
+plt.plot(x,y)
+plt.title("Save this plot")
+plt.savefig("plot.png",dpi=300)
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+#integrating with pandas
+data={
+    "subject":["math","physics","chemistry","biology"],
+    "marks":[90,85,95,80] 
+    }
+df=pd.DataFrame(data)
+#plot bar chart from dataframe
+df.plot(x="subject",y="marks",kind="bar",color="green",legend=False)
+plt.title("subject wise marks")
+plt.ylabel("score")
+plt.show()
+
+#real life example
+months=['jan','feb','mar','apr']
+sales=[3000,4000,3500,5000]
+profit=[800,1200,1000,1500]
+plt.plot(months,sales,label="sales",marker='o')
+plt.plot(months,profit,label="profit",marker='s')
+plt.title("monthly performance")
+plt.xlabel("month")
+plt.ylabel("amount")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+from sqlite3.dbapi2 import Cursor
+import sqlite3    #why use sqlite 3 -> no need of served and it is light weight 
+db=sqlite3.connect("database2.db")  #create the database or connect if db file exists
+#to run the sqlcommands we need cursor object
+cursorobj=db.cursor() #cursorobj-> it acts as a bridge between your python code and sql lite 3 databse
+#to actually run sql commands on python we need cursor object
+#database file -> collection of files -> collection of data
+#create table,read table,updata values(insert values on table),delete values ->CRUCD
+cursorobj.execute('''CREATE TABLE IF NOT EXISTS students(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT NOT NULL,
+age INTEGER,
+grade TEXT)''')
+db.commit()  #save the changes
+
+cursorobj.execute('''INSERT INTO students(name,age,grade) VALUES(?,?,?)''',("Alice",20,"A"))
+db.commit()
+
+data2=[("BOB",19,"b"),
+       ("ALICE",20,"a"),
+       ("JACK",21,"c"),
+       ("OGGY",22,"b"),
+       ("SQUARE",23,"a"),
+       ("CIRCLE",22,"a"),
+       ("RECT",20,"c"),]
+
+cursorobj.executemany("INSERT INTO students(name,age,grade) VALUES(?,?,?)",data2)
+db.commit()
+#printing the data from database
+cursorobj.execute('''SELECT * FROM students''')
+data=cursorobj.fetchall()
+
+for i in data:
+  print(i)
