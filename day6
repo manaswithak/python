@@ -72,10 +72,10 @@ from sqlite3.dbapi2 import Cursor
 import sqlite3    #why use sqlite 3 -> no need of served and it is light weight 
 db=sqlite3.connect("database2.db")  #create the database or connect if db file exists
 #to run the sqlcommands we need cursor object
-cursorobj=db.cursor() #cursorobj-> it acts as a bridge between your python code and sql lite 3 databse
+cursorobj=db.cursor() #cursorobj-> it acts as a bridge between your python code and sql lite 3 database
 #to actually run sql commands on python we need cursor object
 #database file -> collection of files -> collection of data
-#create table,read table,updata values(insert values on table),delete values ->CRUCD
+#create table,read table,updata values(insert values on table),delete values ->CRUD
 cursorobj.execute('''CREATE TABLE IF NOT EXISTS students(
 id INTEGER PRIMARY KEY AUTOINCREMENT,
 name TEXT NOT NULL,
@@ -102,3 +102,114 @@ data=cursorobj.fetchall()
 
 for i in data:
   print(i)
+
+
+from sqlite3.dbapi2 import Cursor
+import sqlite3    #why use sqlite 3 -> no need of served and it is light weight 
+db=sqlite3.connect("database3.db")  #create the database or connect if db file exists
+#to run the sqlcommands we need cursor object
+cursorobj=db.cursor() #cursorobj-> it acts as a bridge between your python code and sql lite 3 databse
+#to actually run sql commands on python we need cursor object
+#database file -> collection of files -> collection of data
+#create table,read table,updata values(insert values on table),delete values ->CRUD
+cursorobj.execute('''CREATE TABLE IF NOT EXISTS students(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT NOT NULL,
+age INTEGER,
+grade TEXT)''')
+db.commit()  #save the changes
+
+data2=[("BOB",19,"b"),
+       ("ALICE",20,"a"),
+       ("JACK",21,"c"),
+       ("OGGY",22,"b"),
+       ("SQUARE",23,"a"),
+       ("CIRCLE",22,"a"),
+       ("RECT",20,"c"),]
+
+cursorobj.executemany("INSERT INTO students(name,age,grade) VALUES(?,?,?)",data2)
+db.commit()
+#printing the data from database
+
+cursorobj.execute('''UPDATE students SET age=? WHERE  name=? ''',(30,"RECT"))
+cursorobj.execute('''UPDATE students SET name=? WHERE  id=? ''',("govintham",2))
+cursorobj.execute('''UPDATE students SET grade=? WHERE  id=? ''',("b",3))
+cursorobj.execute('''SELECT * FROM students''')
+db.commit()
+data=cursorobj.fetchall()
+
+for i in data:
+  print(i)
+
+# API(application programming interface) acts as a mediator between server and user
+# it is a set of rules that allows one software application to interact with another
+#javascript object notation(json) ->data format used for API
+#GET ->fetch data from server
+#POST ->submit new data to server
+#PUT ->update existing resource
+#DELETE ->remove a resource
+#JSON only "" you can see that in output, where as python dict can exist in "" and ''
+dict={
+    'name':'govinthan','age':'24','course':'python'
+}
+print(dict)
+
+import json
+dict={
+    'name':'govinthan','age':'24','course':'python'
+}
+
+json_obj=json.dumps(dict)  #converting dict to JSON
+print(json_obj)
+dict2=json.loads(json_obj) #converting jSON to dictionary
+print(dict2)
+
+# requests module
+import json
+import requests
+#https://zenquotes.io/api/quotes
+url="https://zenquotes.io/api/quotes"
+
+json_data=requests.get(url)
+
+data=json_data.json() # .json ->convert json to dict
+print(data[0]["a"])
+print(data[0]["q"])
+print(data[0]["h"])
+print(data[4]["q"])
+print(data[0]["a"])
+
+# requests module
+import json
+import requests
+# take name and predict nationality
+url="https://api.nationalize.io"
+
+json_data=requests.get(url,params={"name":"Manaswitha"}) #get method retrieve data but here with name parameter
+
+data=json_data.json() # .json ->convert json to dict
+print(data)
+
+# requests module
+import json
+import requests
+# take name and predict nationality
+url="https://api.nationalize.io"
+name=input("enter name")
+json_data=requests.get(url,params={"name":name}) #get method retrieve data but here with name parameter
+
+data=json_data.json() # .json ->convert json to dict
+print(data)
+
+#login to openweather
+import json
+import requests
+api_key = "your_api_key"
+city = "Delhi"
+url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+
+res = requests.get(url)
+weather = res.json()
+
+print("Temperature:", weather['main']['temp'], "°C")
+print("Condition:", weather['weather'][0]['description'])
